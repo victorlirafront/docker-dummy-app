@@ -1,8 +1,12 @@
 FROM node:alpine
 
+RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/backend
 # RUN mkdir -p /home/node/server && chown -R node:node /home/node/server
 
-WORKDIR /user/app
+WORKDIR /usr/src/app/backend
+
+# VOLUME . /usr/src/app/backend
 
 # RUN mkdir -p node_modules && chown -R node:node node_modules
 
