@@ -6,6 +6,8 @@ services:
     ports: # Port binding to host from docker container
       - "3000:3000" # Bind port 3000 of host to 3000 of container
     container_name: frontend-docker
+    volumes:
+      - .:/usr/src/app
     restart: always # What to do if container crashes
     links:
       - backend
@@ -16,6 +18,8 @@ services:
     ports:
       - "3333:3333"
     container_name: backend-docker
+    volumes:
+      - .:/usr/src/app
     restart: always
     links:
       - db
@@ -26,7 +30,10 @@ services:
       - "3306"
     ports:
       - 3306:3306
+    volumes:
+      - .:/usr/src/app
     environment:
       MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_SORT_BUFFER_SIZE: 1024K
+    restart: always
